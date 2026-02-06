@@ -1,0 +1,67 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="publications" class="py-16 md:py-24" style="background-color: var(--color-surface)">
+  <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
+    <h2 
+      class="font-heading text-2xl md:text-3xl font-bold mb-8 md:mb-12"
+      style={`color: ${siteConfig.accentColor}`}
+    >
+      Publicaciones Académicas
+    </h2>
+
+    <div class="space-y-6">
+      {siteConfig.publications?.map((pub, index) => (
+        <article 
+          class="group p-6 rounded-xl transition-all duration-300 hover:shadow-lg"
+          style="background-color: var(--color-bg)"
+        >
+          <div class="flex flex-col md:flex-row md:items-start gap-4">
+            <div 
+              class="shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold"
+              style={`background-color: ${siteConfig.secondaryColor || '#102A43'}`}
+            >
+              {pub.year.slice(-2)}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold mb-2" style="color: var(--color-text)">
+                {pub.link && pub.link !== '#' ? (
+                  <a 
+                    href={pub.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="hover:underline transition-colors"
+                    style={`color: ${siteConfig.accentColor}`}
+                  >
+                    {pub.title}
+                  </a>
+                ) : (
+                  pub.title
+                )}
+              </h3>
+              <p class="text-sm opacity-70" style="color: var(--color-text)">
+                {pub.journal} • {pub.year}
+              </p>
+            </div>
+            {pub.link && pub.link !== '#' && (
+              <a 
+                href={pub.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="shrink-0 opacity-50 hover:opacity-100 transition-opacity"
+                aria-label="Ver publicación"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/>
+                  <path d="M11 13l9-9"/>
+                  <path d="M15 4h5v5"/>
+                </svg>
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

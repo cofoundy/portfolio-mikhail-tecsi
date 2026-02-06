@@ -1,0 +1,115 @@
+---
+import { siteConfig } from "../config";
+
+// Get initials
+const nameParts = siteConfig.name.split(' ');
+const initials = nameParts.length >= 2 
+  ? `${nameParts[0][0]}${nameParts[nameParts.length - 1][0]}`
+  : nameParts[0].substring(0, 2).toUpperCase();
+---
+
+<div
+  id="hero"
+  class="relative isolate overflow-hidden py-24 md:min-h-screen flex items-center"
+  style={`background-color: var(--color-bg); --accent-color: ${siteConfig.accentColor}`}
+>
+  <!-- Subtle academic pattern -->
+  <div class="absolute inset-0 -z-10 opacity-[0.03]">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="academic-lines" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="50" x2="100" y2="50" stroke={siteConfig.accentColor} stroke-width="0.5"/>
+          <line x1="50" y1="0" x2="50" y2="100" stroke={siteConfig.accentColor} stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect fill="url(#academic-lines)" width="100%" height="100%"/>
+    </svg>
+  </div>
+
+  <!-- Gradient accent -->
+  <div
+    class="absolute top-0 right-0 w-1/2 h-full -z-10 opacity-10"
+    style={`background: radial-gradient(ellipse at top right, ${siteConfig.accentColor}, transparent 60%)`}
+  ></div>
+
+  <div class="mx-auto px-8 sm:px-12 md:px-24 w-full max-w-6xl">
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+      <!-- Avatar with initials -->
+      <div 
+        class="w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center text-4xl md:text-5xl font-bold text-white animate-fade-in shrink-0"
+        style={`background: linear-gradient(135deg, ${siteConfig.accentColor}, ${siteConfig.secondaryColor || '#102A43'})`}
+      >
+        {initials}
+      </div>
+
+      <div class="text-center md:text-left">
+        <h1
+          class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight animate-fade-in animation-delay-200"
+          style={`color: var(--color-text)`}
+        >
+          {siteConfig.name}
+        </h1>
+        <p
+          class="mt-4 md:mt-6 text-base sm:text-lg md:text-xl font-medium animate-fade-in animation-delay-400"
+          style={`color: ${siteConfig.accentColor}`}
+        >
+          {siteConfig.title}
+        </p>
+
+        <!-- Contact -->
+        <div class="mt-6 md:mt-8 flex justify-center md:justify-start gap-4 animate-fade-in animation-delay-600">
+          {siteConfig.social?.email && (
+            <a
+              href={`mailto:${siteConfig.social.email}`}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
+              style={`background-color: ${siteConfig.accentColor}; color: white;`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/>
+                <path d="M3 7l9 6l9 -6"/>
+              </svg>
+              Contacto
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-40">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+import { siteConfig } from "../config";
+---
+
+<footer 
+  class="py-12 md:py-16 border-t"
+  style={`background-color: var(--color-surface); border-color: ${siteConfig.accentColor}15`}
+>
+  <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <!-- Left: Name and contact -->
+      <div class="flex flex-col gap-3">
+        <h3 
+          class="font-heading text-xl font-bold"
+          style="color: var(--color-text)"
+        >
+          {siteConfig.name}
+        </h3>
+        <p 
+          class="text-sm opacity-70"
+          style="color: var(--color-text)"
+        >
+          {siteConfig.footer?.location || "Arequipa, Perú"}
+        </p>
+        
+        {siteConfig.social?.email && (
+          <a
+            href={`mailto:${siteConfig.social.email}`}
+            class="inline-flex items-center gap-2 text-sm transition-opacity opacity-70 hover:opacity-100"
+            style="color: var(--color-text)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/>
+              <path d="M3 7l9 6l9 -6"/>
+            </svg>
+            {siteConfig.social.email}
+          </a>
+        )}
+      </div>
+
+      <!-- Right: Copyright -->
+      <div class="text-center md:text-right">
+        <p 
+          class="text-sm opacity-50"
+          style="color: var(--color-text)"
+        >
+          © {siteConfig.footer?.copyright || new Date().getFullYear()} {siteConfig.name}
+        </p>
+        <p 
+          class="text-xs mt-1 opacity-30"
+          style="color: var(--color-text)"
+        >
+          Portfolio Académico
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

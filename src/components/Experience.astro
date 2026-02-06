@@ -1,0 +1,84 @@
+---
+import { siteConfig } from "../config";
+const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
+---
+
+{
+  hasExperience && (
+    <section id="experience" class="py-16 md:py-24" style="background-color: var(--color-bg)">
+      <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="lg:col-span-4">
+            <h2 
+              class="font-heading text-2xl md:text-3xl font-bold"
+              style={`color: ${siteConfig.accentColor}`}
+            >
+              Experiencia Profesional
+            </h2>
+            <div
+              class="w-16 h-1 mt-3 rounded-full"
+              style={`background-color: ${siteConfig.accentColor}`}
+            />
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="space-y-6">
+              {siteConfig.experience.map((exp, index) => (
+                <div 
+                  class="relative p-5 md:p-6 rounded-xl transition-all duration-300 hover:shadow-md"
+                  style="background-color: var(--color-surface)"
+                >
+                  {/* Timeline connector */}
+                  {index < siteConfig.experience.length - 1 && (
+                    <div 
+                      class="absolute left-8 bottom-0 w-0.5 h-6 translate-y-full"
+                      style={`background-color: ${siteConfig.accentColor}30`}
+                    />
+                  )}
+                  
+                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                    <div>
+                      <h3 
+                        class="text-lg font-semibold"
+                        style="color: var(--color-text)"
+                      >
+                        {exp.title}
+                      </h3>
+                      <p
+                        class="text-base mt-1"
+                        style={`color: ${siteConfig.secondaryColor || '#102A43'}`}
+                      >
+                        {exp.company}
+                      </p>
+                    </div>
+                    <span 
+                      class="text-xs font-medium mt-2 sm:mt-0 px-3 py-1 rounded-full"
+                      style={`background-color: ${siteConfig.accentColor}15; color: ${siteConfig.accentColor}`}
+                    >
+                      {exp.dateRange}
+                    </span>
+                  </div>
+
+                  <ul class="space-y-2 mt-4">
+                    {exp.bullets.map((bullet) => (
+                      <li 
+                        class="flex items-start text-sm"
+                        style="color: var(--color-text); opacity: 0.8"
+                      >
+                        <span 
+                          class="inline-block w-1.5 h-1.5 rounded-full mt-2 mr-3 shrink-0"
+                          style={`background-color: ${siteConfig.accentColor}`}
+                        />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
