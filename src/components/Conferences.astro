@@ -4,35 +4,55 @@ import { siteConfig } from "../config";
 
 <section id="conferences" class="py-16 md:py-24" style="background-color: var(--color-bg)">
   <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
-    <h2 
-      class="font-heading text-2xl md:text-3xl font-bold mb-8 md:mb-12"
-      style={`color: ${siteConfig.accentColor}`}
-    >
-      Conferencias y Ponencias
-    </h2>
-
-    <div class="grid gap-4 md:grid-cols-2">
-      {siteConfig.conferences?.map((conf) => (
-        <div 
-          class="p-6 rounded-xl border transition-all duration-300 hover:shadow-md"
-          style="background-color: var(--color-surface); border-color: rgba(59, 27, 74, 0.1)"
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+      <div class="lg:col-span-4 reveal">
+        <h2
+          class="font-heading text-2xl md:text-3xl font-bold"
+          style={`color: ${siteConfig.accentColor}`}
         >
-          <div class="flex items-start gap-4">
-            <div 
-              class="shrink-0 px-3 py-1 rounded-full text-xs font-semibold"
-              style={`background-color: ${siteConfig.accentColor}20; color: ${siteConfig.accentColor}`}
+          Conferencias y Ponencias
+        </h2>
+        <div
+          class="w-16 h-1 mt-3 rounded-full"
+          style={`background-color: ${siteConfig.accentColor}`}
+        />
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="grid gap-4 md:grid-cols-2">
+          {siteConfig.conferences?.map((conf: any, index: number) => (
+            <div
+              class={`reveal conf-hover p-5 md:p-6 rounded-xl border`}
+              style={`background-color: var(--color-surface); border-color: var(--color-surface-border); transition-delay: ${index * 0.1}s`}
             >
-              {conf.role}
+              <div class="flex items-start gap-3">
+                <span
+                  class="shrink-0 px-3 py-1 rounded-full text-xs font-semibold"
+                  style={`background-color: ${siteConfig.accentColor}20; color: ${siteConfig.accentColor}; border: 1px solid ${siteConfig.accentColor}30`}
+                >
+                  {conf.role}
+                </span>
+                <span class="text-sm font-bold" style={`color: ${siteConfig.accentColor}`}>
+                  {conf.year}
+                </span>
+              </div>
+              <h3 class="mt-3 text-base font-semibold" style="color: var(--color-text)">
+                {conf.name}
+              </h3>
+              <p class="mt-2 text-sm flex items-center gap-1 opacity-60" style="color: var(--color-text)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"/>
+                  <path d="M12 13V9"/>
+                  <path d="M12 17H12.01"/>
+                </svg>
+                {conf.location}
+              </p>
             </div>
-          </div>
-          <h3 class="mt-3 text-base font-semibold" style="color: var(--color-text)">
-            {conf.name}
-          </h3>
-          <p class="mt-2 text-sm opacity-60" style="color: var(--color-text)">
-            {conf.location} • {conf.year}
-          </p>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   </div>
 </section>
+
+<div class="section-divider max-w-6xl mx-auto"></div>

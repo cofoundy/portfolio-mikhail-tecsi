@@ -19,19 +19,14 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={siteConfig.description} />
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    
-    <title>{siteConfig.name} - Portfolio Académico</title>
-    
-    <!-- OG Meta -->
-    <meta property="og:title" content={`${siteConfig.name} - Portfolio Académico`} />
+    <title>{siteConfig.name} - Portfolio Academico</title>
+    <meta property="og:title" content={`${siteConfig.name} - Portfolio Academico`} />
     <meta property="og:description" content={siteConfig.description} />
     <meta property="og:type" content="website" />
   </head>
@@ -47,5 +42,22 @@ import "../styles/global.css";
       <Experience />
     </main>
     <Footer />
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>

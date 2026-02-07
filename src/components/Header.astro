@@ -15,66 +15,38 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
   <nav class="max-w-6xl mx-auto px-8 py-4">
     <ul class="flex items-center gap-6 justify-center text-sm">
       <li>
-        <a
-          href="#about"
-          class="transition-colors font-medium opacity-70 hover:opacity-100"
-          style="color: var(--color-text)"
-        >
-          Sobre Mí
+        <a href="#about" class="nav-link font-medium opacity-70 hover:opacity-100" style="color: var(--color-text)">
+          Sobre Mi
         </a>
       </li>
-      {
-        hasEducation && (
-          <li>
-            <a
-              href="#education"
-              class="transition-colors font-medium opacity-70 hover:opacity-100"
-              style="color: var(--color-text)"
-            >
-              Formación
-            </a>
-          </li>
-        )
-      }
-      {
-        hasPublications && (
-          <li>
-            <a
-              href="#publications"
-              class="transition-colors font-medium opacity-70 hover:opacity-100"
-              style="color: var(--color-text)"
-            >
-              Publicaciones
-            </a>
-          </li>
-        )
-      }
-      {
-        hasConferences && (
-          <li>
-            <a
-              href="#conferences"
-              class="transition-colors font-medium opacity-70 hover:opacity-100"
-              style="color: var(--color-text)"
-            >
-              Conferencias
-            </a>
-          </li>
-        )
-      }
-      {
-        hasExperience && (
-          <li>
-            <a
-              href="#experience"
-              class="transition-colors font-medium opacity-70 hover:opacity-100"
-              style="color: var(--color-text)"
-            >
-              Experiencia
-            </a>
-          </li>
-        )
-      }
+      {hasEducation && (
+        <li>
+          <a href="#education" class="nav-link font-medium opacity-70 hover:opacity-100" style="color: var(--color-text)">
+            Formacion
+          </a>
+        </li>
+      )}
+      {hasPublications && (
+        <li>
+          <a href="#publications" class="nav-link font-medium opacity-70 hover:opacity-100" style="color: var(--color-text)">
+            Publicaciones
+          </a>
+        </li>
+      )}
+      {hasConferences && (
+        <li>
+          <a href="#conferences" class="nav-link font-medium opacity-70 hover:opacity-100" style="color: var(--color-text)">
+            Conferencias
+          </a>
+        </li>
+      )}
+      {hasExperience && (
+        <li>
+          <a href="#experience" class="nav-link font-medium opacity-70 hover:opacity-100" style="color: var(--color-text)">
+            Experiencia
+          </a>
+        </li>
+      )}
     </ul>
   </nav>
 </header>
@@ -83,9 +55,9 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     if (window.scrollY > 100) {
-      header?.classList.add("header-scrolled");
+      header?.classList.add("header-glass");
     } else {
-      header?.classList.remove("header-scrolled");
+      header?.classList.remove("header-glass");
     }
   });
 </script>
@@ -93,11 +65,5 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 <style>
   html {
     scroll-behavior: smooth;
-  }
-  
-  .header-scrolled {
-    background-color: rgba(251, 247, 242, 0.9);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 </style>

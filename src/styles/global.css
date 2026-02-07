@@ -6,6 +6,7 @@
   --color-accent: #3B1B4A;
   --color-secondary: #102A43;
   --color-surface: #F5F0EA;
+  --color-surface-border: #E8E0D6;
 }
 
 body {
@@ -16,4 +17,173 @@ body {
 
 .font-heading {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
+/* ── Scroll Reveal System ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.revealed {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* ── Hero Entrance ── */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroBlurIn {
+  from { opacity: 0; filter: blur(8px); transform: translateY(10px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+@keyframes heroScaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.hero-avatar { animation: heroScaleIn 0.6s ease-out forwards; opacity: 0; }
+.hero-name { animation: heroBlurIn 0.5s ease-out 0.2s forwards; opacity: 0; }
+.hero-title { animation: heroFadeIn 0.5s ease-out 0.4s forwards; opacity: 0; }
+.hero-stats { animation: heroFadeIn 0.5s ease-out 0.6s forwards; opacity: 0; }
+.hero-cta { animation: heroFadeIn 0.5s ease-out 0.8s forwards; opacity: 0; }
+.hero-scroll { animation: heroFadeIn 0.5s ease-out 1s forwards; opacity: 0; }
+
+/* ── Card Hover ── */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px -5px rgba(59, 27, 74, 0.1), 0 4px 10px -5px rgba(59, 27, 74, 0.05);
+}
+
+/* ── Publication Card Link Hover ── */
+.pub-link-hover {
+  transition: color 0.2s ease;
+}
+.pub-link-hover:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Skill Badge Hover ── */
+.skill-hover {
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.skill-hover:hover {
+  transform: scale(1.05);
+  background-color: rgba(59, 27, 74, 0.12);
+}
+
+/* ── Conference Card Hover ── */
+.conf-hover {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.conf-hover:hover {
+  transform: scale(1.01);
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(59, 27, 74, 0.08);
+}
+
+/* ── Section Divider ── */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.2;
+}
+
+/* ── Timeline ── */
+.timeline-line {
+  position: relative;
+}
+.timeline-dot {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* ── "En curso" pulse badge ── */
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.badge-pulse {
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+/* ── Scroll Indicator ── */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ── Header Glass ── */
+.header-glass {
+  background-color: rgba(251, 247, 242, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Nav Active Indicator ── */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.2s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ── External Link Icon ── */
+.ext-link-icon {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.group:hover .ext-link-icon {
+  transform: rotate(5deg);
+  opacity: 1;
+}
+
+/* ── Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.3s ease;
+  }
+  .hero-avatar, .hero-name, .hero-title, .hero-stats, .hero-cta, .hero-scroll {
+    animation: none;
+    opacity: 1;
+  }
+  .card-hover:hover { transform: none; }
+  .scroll-indicator { animation: none; }
+  .badge-pulse { animation: none; }
 }

@@ -2,31 +2,23 @@
 import { siteConfig } from "../config";
 ---
 
-<footer 
+<footer
   class="py-12 md:py-16 border-t"
   style={`background-color: var(--color-surface); border-color: ${siteConfig.accentColor}15`}
 >
   <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-      <!-- Left: Name and contact -->
       <div class="flex flex-col gap-3">
-        <h3 
-          class="font-heading text-xl font-bold"
-          style="color: var(--color-text)"
-        >
+        <h3 class="font-heading text-xl font-bold" style="color: var(--color-text)">
           {siteConfig.name}
         </h3>
-        <p 
-          class="text-sm opacity-70"
-          style="color: var(--color-text)"
-        >
-          {siteConfig.footer?.location || "Arequipa, Perú"}
+        <p class="text-sm opacity-60" style="color: var(--color-text)">
+          {siteConfig.footer?.location || "Arequipa, Peru"}
         </p>
-        
         {siteConfig.social?.email && (
           <a
             href={`mailto:${siteConfig.social.email}`}
-            class="inline-flex items-center gap-2 text-sm transition-opacity opacity-70 hover:opacity-100"
+            class="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity"
             style="color: var(--color-text)"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -38,21 +30,20 @@ import { siteConfig } from "../config";
         )}
       </div>
 
-      <!-- Right: Copyright -->
-      <div class="text-center md:text-right">
-        <p 
-          class="text-sm opacity-50"
-          style="color: var(--color-text)"
-        >
-          © {siteConfig.footer?.copyright || new Date().getFullYear()} {siteConfig.name}
+      <div class="text-center md:text-right space-y-2">
+        <p class="text-sm opacity-50" style="color: var(--color-text)">
+          &copy; {siteConfig.footer?.copyright || new Date().getFullYear()} {siteConfig.name}
         </p>
-        <p 
-          class="text-xs mt-1 opacity-30"
-          style="color: var(--color-text)"
-        >
-          Portfolio Académico
+        <p class="text-xs opacity-30" style="color: var(--color-text)">
+          Portfolio Academico
+        </p>
+        <p class="text-xs" style="color: var(--color-accent); opacity: 0.4">
+          Hecho con <span style={`color: ${siteConfig.accentColor}`}>&hearts;</span> por <a href="https://cofoundy.dev" target="_blank" rel="noopener noreferrer" style={`color: ${siteConfig.accentColor}`}>Cofoundy</a>
         </p>
       </div>
     </div>
+
+    <!-- Decorative accent line -->
+    <div class="mt-8 h-0.5 w-full rounded-full" style={`background: linear-gradient(90deg, transparent, ${siteConfig.accentColor}30, transparent)`}></div>
   </div>
 </footer>

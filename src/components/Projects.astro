@@ -3,98 +3,79 @@ import { siteConfig } from "../config";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 ---
 
-{
-  hasProjects && (
-    <section id="projects" class="py-16 md:py-24" style="background-color: var(--color-surface)">
-      <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div class="lg:col-span-4">
-            <h2 
-              class="font-heading text-2xl md:text-3xl font-bold"
-              style={`color: ${siteConfig.accentColor}`}
-            >
-              Investigación Destacada
-            </h2>
-            <div
-              class="w-16 h-1 mt-3 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
-            />
-          </div>
+{hasProjects && (
+  <section id="projects" class="py-16 md:py-24" style="background-color: var(--color-surface)">
+    <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+        <div class="lg:col-span-4 reveal">
+          <h2
+            class="font-heading text-2xl md:text-3xl font-bold"
+            style={`color: ${siteConfig.accentColor}`}
+          >
+            Investigacion Destacada
+          </h2>
+          <div
+            class="w-16 h-1 mt-3 rounded-full"
+            style={`background-color: ${siteConfig.accentColor}`}
+          />
+        </div>
 
-          <div class="lg:col-span-8">
-            <div class="space-y-6">
-              {siteConfig.projects.map((project, index) => {
-                const isLink = project.link && project.link !== '#';
-                const Component = isLink ? "a" : "div";
-                const linkProps = isLink
-                  ? {
-                      href: project.link,
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    }
-                  : {};
+        <div class="lg:col-span-8">
+          <div class="space-y-4">
+            {siteConfig.projects.map((project: any, index: number) => {
+              const isLink = project.link && project.link !== '#';
+              const Component = isLink ? "a" : "div";
+              const linkProps = isLink
+                ? { href: project.link, target: "_blank", rel: "noopener noreferrer" }
+                : {};
 
-                return (
-                  <Component
-                    {...linkProps}
-                    class={`block p-5 md:p-6 rounded-xl transition-all duration-300 ${
-                      isLink ? "hover:shadow-lg cursor-pointer" : ""
-                    }`}
-                    style="background-color: var(--color-bg)"
-                  >
-                    <div class="flex items-start gap-4">
-                      <div 
-                        class="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-white text-sm font-bold"
-                        style={`background-color: ${siteConfig.accentColor}`}
-                      >
-                        0{index + 1}
-                      </div>
-                      <div class="flex-1">
-                        <h3 
-                          class="text-lg font-semibold mb-2"
-                          style="color: var(--color-text)"
-                        >
-                          {project.name}
-                        </h3>
-                        <p 
-                          class="text-sm leading-relaxed mb-4"
-                          style="color: var(--color-text); opacity: 0.8"
-                        >
-                          {project.description}
-                        </p>
-                        {project.skills && project.skills.length > 0 && (
-                          <div class="flex flex-wrap gap-2">
-                            {project.skills.map((skill) => (
-                              <span
-                                class="px-2 py-1 rounded text-xs font-medium"
-                                style={`background-color: ${siteConfig.secondaryColor || '#102A43'}20; color: ${siteConfig.secondaryColor || '#102A43'}`}
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                      {isLink && (
-                        <svg 
-                          class="shrink-0 w-5 h-5 opacity-40"
-                          xmlns="http://www.w3.org/2000/svg" 
-                          viewBox="0 0 24 24" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          stroke-width="2"
-                        >
-                          <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                        </svg>
+              return (
+                <Component
+                  {...linkProps}
+                  class={`reveal-scale block card-hover p-5 md:p-6 rounded-xl border ${isLink ? 'cursor-pointer' : ''}`}
+                  style={`background-color: var(--color-bg); border-color: var(--color-surface-border); transition-delay: ${index * 0.1}s`}
+                >
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-white text-sm font-bold"
+                      style={`background-color: ${siteConfig.accentColor}`}
+                    >
+                      0{index + 1}
+                    </div>
+                    <div class="flex-1">
+                      <h3 class="text-lg font-semibold mb-2" style="color: var(--color-text)">
+                        {project.name}
+                      </h3>
+                      <p class="text-sm leading-relaxed mb-3 opacity-80" style="color: var(--color-text)">
+                        {project.description}
+                      </p>
+                      {project.skills && project.skills.length > 0 && (
+                        <div class="flex flex-wrap gap-2">
+                          {project.skills.map((skill: string) => (
+                            <span
+                              class="skill-hover px-2 py-1 rounded text-xs font-medium"
+                              style={`background-color: ${siteConfig.secondaryColor || '#102A43'}15; color: ${siteConfig.secondaryColor || '#102A43'}`}
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
                       )}
                     </div>
-                  </Component>
-                );
-              })}
-            </div>
+                    {isLink && (
+                      <svg class="shrink-0 w-5 h-5 opacity-40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                      </svg>
+                    )}
+                  </div>
+                </Component>
+              );
+            })}
           </div>
         </div>
       </div>
-    </section>
-  )
-}
+    </div>
+  </section>
+)}
+
+<div class="section-divider max-w-6xl mx-auto"></div>

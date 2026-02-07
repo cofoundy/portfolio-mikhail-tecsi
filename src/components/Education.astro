@@ -3,48 +3,49 @@ import { siteConfig } from "../config";
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 ---
 
-{
-  hasEducation && (
-    <section id="education" class="py-16 md:py-24" style="background-color: var(--color-bg)">
-      <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div class="lg:col-span-4">
-            <h2 
-              class="font-heading text-2xl md:text-3xl font-bold"
-              style={`color: ${siteConfig.accentColor}`}
-            >
-              Formación Académica
-            </h2>
-            <div
-              class="w-16 h-1 mt-3 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
-            />
-          </div>
+{hasEducation && (
+  <section id="education" class="py-16 md:py-24" style="background-color: var(--color-bg)">
+    <div class="mx-auto max-w-6xl px-8 sm:px-12 md:px-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+        <div class="lg:col-span-4 reveal">
+          <h2
+            class="font-heading text-2xl md:text-3xl font-bold"
+            style={`color: ${siteConfig.accentColor}`}
+          >
+            Formacion Academica
+          </h2>
+          <div
+            class="w-16 h-1 mt-3 rounded-full"
+            style={`background-color: ${siteConfig.accentColor}`}
+          />
+        </div>
 
-          <div class="lg:col-span-8">
-            <div class="space-y-6">
-              {siteConfig.education.map((edu) => (
-                <div 
-                  class="p-5 md:p-6 rounded-xl transition-all duration-300 hover:shadow-md"
-                  style="background-color: var(--color-surface)"
+        <div class="lg:col-span-8">
+          <div class="relative pl-8">
+            <div class="absolute left-0 top-0 w-0.5 h-full rounded-full" style={`background-color: ${siteConfig.accentColor}20`}></div>
+
+            {siteConfig.education.map((edu: any, index: number) => (
+              <div class="reveal relative mb-8 last:mb-0" style={`transition-delay: ${index * 0.12}s`}>
+                <div
+                  class="timeline-dot absolute -left-8 top-2 w-3.5 h-3.5 rounded-full border-2"
+                  style={`border-color: ${siteConfig.accentColor}; background-color: var(--color-bg)`}
+                ></div>
+
+                <div
+                  class="card-hover p-5 md:p-6 rounded-xl border"
+                  style={`background-color: var(--color-surface); border-color: var(--color-surface-border)`}
                 >
                   <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
                     <div>
-                      <h3 
-                        class="text-lg font-semibold"
-                        style="color: var(--color-text)"
-                      >
+                      <h3 class="text-lg font-semibold" style="color: var(--color-text)">
                         {edu.degree}
                       </h3>
-                      <p
-                        class="text-base mt-1"
-                        style={`color: ${siteConfig.secondaryColor || '#102A43'}`}
-                      >
+                      <p class="text-base mt-1" style={`color: ${siteConfig.secondaryColor || '#102A43'}`}>
                         {edu.school}
                       </p>
                     </div>
-                    <span 
-                      class="text-xs font-medium mt-2 sm:mt-0 px-3 py-1 rounded-full"
+                    <span
+                      class={`text-xs font-medium mt-2 sm:mt-0 px-3 py-1 rounded-full ${edu.dateRange.includes('En curso') ? 'badge-pulse' : ''}`}
                       style={`background-color: ${siteConfig.accentColor}15; color: ${siteConfig.accentColor}`}
                     >
                       {edu.dateRange}
@@ -52,10 +53,10 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                   </div>
 
                   <ul class="space-y-2 mt-4">
-                    {edu.achievements.map((achievement) => (
+                    {edu.achievements.map((achievement: string) => (
                       <li class="flex items-start text-sm" style="color: var(--color-text); opacity: 0.8">
-                        <span 
-                          class="inline-block w-1.5 h-1.5 rounded-full mt-2 mr-3 shrink-0" 
+                        <span
+                          class="inline-block w-1.5 h-1.5 rounded-full mt-2 mr-3 shrink-0"
                           style={`background-color: ${siteConfig.accentColor}`}
                         />
                         {achievement}
@@ -63,11 +64,13 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                     ))}
                   </ul>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </section>
-  )
-}
+    </div>
+  </section>
+)}
+
+<div class="section-divider max-w-6xl mx-auto"></div>
