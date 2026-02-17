@@ -8,6 +8,7 @@ export const siteConfig = {
   textColor: "#222222", // Negro suave
   social: {
     email: "mhtsantillana@gmail.com",
+    whatsapp: "994808867",
   },
   aboutMe:
     "Abogado de la Universidad Continental, especializado en Desafíos Jurídicos de la Inteligencia Artificial por la Pontificia Universidad Católica del Perú. Magíster en Argumentación Jurídica por la Universidad de León (España) y Universidad del Magdalena (Colombia). Egresado de la Maestría en Filosofía del Derecho por la Universidad de Buenos Aires. Doctorando en Filosofía por la PUCP. Mi investigación se centra en la intersección entre Filosofía del Derecho, Inteligencia Artificial, y su impacto en la práctica jurídica.",
