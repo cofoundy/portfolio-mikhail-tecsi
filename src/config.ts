@@ -202,39 +202,22 @@ export const siteConfig = {
   ],
   awards: [
     {
-      title: "Reconocimiento del Congreso de la República del Perú",
-      description: "Trayectoria Artística",
-      year: "2024",
-    },
-    {
-      title: "Excelencia Académica — Universidad de León",
-      description: "Ponderado 9/10 y felicitación en investigación",
-      year: "2023",
-    },
-    {
-      title: "Excelencia — Universidad del Magdalena",
-      description: "Posgrado",
-      year: "2024",
-    },
-    {
-      title: "1er Puesto — Concurso de Innovación 'Prototipando'",
-      description: "Universidad Continental",
-      year: "2019",
-    },
-    {
-      title: "1er Puesto — Concurso 'Cambiar para Cambiar'",
-      description: "Proyecto de Ética y Ciudadanía — Universidad La Salle",
+      title: "Concurso Cambiar para Cambiar: Proyecto de Ética y Ciudadanía",
+      institution: "Universidad La Salle",
       year: "2015",
+      type: "Primer puesto",
     },
     {
-      title: "Décimo Superior",
-      description: "Universidad La Salle — 1er semestre",
-      year: "2014",
+      title: 'Concurso de Innovación "Prototipando Innovación"',
+      institution: "Universidad Continental",
+      year: "2019",
+      type: "Primer puesto",
     },
     {
-      title: "Tercio Superior",
-      description: "Universidad La Salle y Universidad Continental — múltiples semestres",
-      year: "2015 - 2020",
+      title: "Congreso de la República del Perú",
+      institution: "Trayectoria Artística",
+      year: "2024",
+      type: "Reconocimiento",
     },
   ],
   footer: {
