@@ -125,6 +125,14 @@ export const siteConfig = {
       ],
     },
     {
+      school: "Universidad Nacional Autónoma de México (UNAM)",
+      degree: "Diplomado en Lógica y Argumentación",
+      dateRange: "2025",
+      achievements: [
+        "Formación en lógica formal y argumentación jurídica",
+      ],
+    },
+    {
       school: "Universidad Continental",
       degree: "Abogado",
       dateRange: "2019 - 2021",
@@ -190,6 +198,43 @@ export const siteConfig = {
       location: "Buenos Aires, Argentina",
       year: "2021",
       role: "Ponente",
+    },
+  ],
+  awards: [
+    {
+      title: "Reconocimiento del Congreso de la República del Perú",
+      description: "Trayectoria Artística",
+      year: "2024",
+    },
+    {
+      title: "Excelencia Académica — Universidad de León",
+      description: "Ponderado 9/10 y felicitación en investigación",
+      year: "2023",
+    },
+    {
+      title: "Excelencia — Universidad del Magdalena",
+      description: "Posgrado",
+      year: "2024",
+    },
+    {
+      title: "1er Puesto — Concurso de Innovación 'Prototipando'",
+      description: "Universidad Continental",
+      year: "2019",
+    },
+    {
+      title: "1er Puesto — Concurso 'Cambiar para Cambiar'",
+      description: "Proyecto de Ética y Ciudadanía — Universidad La Salle",
+      year: "2015",
+    },
+    {
+      title: "Décimo Superior",
+      description: "Universidad La Salle — 1er semestre",
+      year: "2014",
+    },
+    {
+      title: "Tercio Superior",
+      description: "Universidad La Salle y Universidad Continental — múltiples semestres",
+      year: "2015 - 2020",
     },
   ],
   footer: {

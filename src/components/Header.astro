@@ -6,6 +6,7 @@ const hasConferences = siteConfig.conferences && siteConfig.conferences.length >
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const hasAwards = (siteConfig as any).awards && (siteConfig as any).awards.length > 0;
 ---
 
 <header
@@ -23,6 +24,13 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         <li>
           <a href="#education" class="nav-link font-medium opacity-70 hover:opacity-100" style="color: var(--color-text)">
             Formación
+          </a>
+        </li>
+      )}
+      {hasAwards && (
+        <li>
+          <a href="#awards" class="nav-link font-medium opacity-70 hover:opacity-100" style="color: var(--color-text)">
+            Logros
           </a>
         </li>
       )}

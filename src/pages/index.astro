@@ -7,6 +7,7 @@ import Publications from "../components/Publications.astro";
 import Conferences from "../components/Conferences.astro";
 import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
+import Awards from "../components/Awards.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
@@ -25,8 +26,8 @@ import "../styles/global.css";
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>{siteConfig.name} - Portfolio Academico</title>
-    <meta property="og:title" content={`${siteConfig.name} - Portfolio Academico`} />
+    <title>{siteConfig.name} - Portfolio Académico</title>
+    <meta property="og:title" content={`${siteConfig.name} - Portfolio Académico`} />
     <meta property="og:description" content={siteConfig.description} />
     <meta property="og:type" content="website" />
   </head>
@@ -36,6 +37,7 @@ import "../styles/global.css";
       <Hero />
       <About />
       <Education />
+      <Awards />
       <Publications />
       <Conferences />
       <Projects />
